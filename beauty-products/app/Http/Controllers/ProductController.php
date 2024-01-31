@@ -15,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $categories = Category::all();
+        $products = Product::all();
+        return view('welcome', compact('products', 'categories'));
     }
 
 
@@ -52,7 +54,7 @@ class ProductController extends Controller
      */
     public function show()
     {
-        
+
     }
 
 
