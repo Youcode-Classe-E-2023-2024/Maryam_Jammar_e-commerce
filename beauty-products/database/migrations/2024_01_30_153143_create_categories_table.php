@@ -18,7 +18,35 @@ return new class extends Migration
             $table->string('category');
             $table->timestamps();
         });
+
+        $categories = [
+            [
+                "category" => "Electronics"
+            ],
+            [
+                "category" => "Fashion"
+            ],
+            [
+                "category" => "Office equipment"
+            ],
+            [
+                "category" => "Furniture"
+            ],
+            [
+                "category" => "House appliances"
+            ],
+            [
+                "category" => "Sports and fitness"
+            ],
+            [
+                "category" => "Auto and Parts"
+            ]
+        ];
+
+        DB::table("categories")->insert($categories);
     }
+
+
 
     /**
      * Reverse the migrations.
