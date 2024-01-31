@@ -19,4 +19,6 @@ Route::get('/', [ProductController::class, 'index'])->name('welcome');
 
 Route::post('/create', [ProductController::class, 'store']);
 
+Route::get('/update', [ProductController::class, 'edit']);
+
 //Route::get('/', [ProductController::class, 'show']);
