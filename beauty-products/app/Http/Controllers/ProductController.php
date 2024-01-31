@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -24,16 +27,42 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category_id' => 'required',
+        ]);
+
+
+        $product = new Product();
+        $product->title = $validatedData['title'];
+        $product->description = $validatedData['description'];
+        $product->price = $validatedData['price'];
+        $product->category_id = $validatedData['category_id'];
+        $product->save();
+
+        return redirect()->route('welcome')->with('status', 'Produit ajouté avec succès');
     }
 
+
+    /***
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show()
+    {
+        
+    }
+
+
     /**
-     * Display the specified resource.
+     * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
         //
     }
