@@ -551,48 +551,76 @@
 
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach($products as $product)
-                    <a href="{{url('/description', $product->id) }}">
-                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                            <div class="flex items-end justify-end h-56 w-full bg-cover"
-                                 style="background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80')">
-                                {{--                            update button--}}
-                                <button data-modal-target="crud-modal-update-{{ $product->id }}"
-                                        data-modal-toggle="crud-modal-update-{{ $product->id }}"
-                                        type="button"
-                                        class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
-                                         fill="currentColor">
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                                    </svg>
-                                </button>
-                                {{--                            delete button--}}
-                                <button>
-                                    <form id="delete-form-{{ $product->id }}"
-                                          action="{{ url('/destroy', $product->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                                class="p-2 rounded-full bg-red-600 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500"
-                                                onclick="confirmDelete({{ $product->id }})">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                 viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M6 18L18 6M6 6l12 12"/>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </button>
+                    <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div class="flex items-end justify-end h-56 w-full bg-cover"
+                             style="background-image: url('{{ asset($product->picture) }}')">
 
 
-                            </div>
+{{--                            --}}{{--update button--}}
+                            <button data-modal-target="crud-modal-update-{{ $product->id }}"
+                                    data-modal-toggle="crud-modal-update-{{ $product->id }}"
+                                    type="button"
+                                    class="p-2 rounded-full z-50 bg-blue-300 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                     fill="currentColor">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                                </svg>
+                            </button>
+{{--                            delete button--}}
+                            <button>
+                                <form id="delete-form-{{ $product->id }}"
+                                      action="{{ url('/destroy', $product->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="p-2 rounded-full bg-red-500 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500"
+                                            onclick="confirmDelete({{ $product->id }})">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </button>
+
+
+{{--                            <a href="{{url('/description', $product->id) }}"--}}
+{{--                               class="transition ease-in duration-300 bg-gray-700 hover:bg-gray-800 border hover:border-gray-500 border-gray-700 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-10 h-10 text-center p-2">--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" class="" fill="none"--}}
+{{--                                     viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
+{{--                                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>--}}
+{{--                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
+{{--                                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>--}}
+{{--                                </svg>--}}
+{{--                            </a>--}}
+
+
+                        </div>
+                        <div class="flex justify-between items-center">
                             <div class="px-5 py-3">
                                 <h3 class="text-gray-700 uppercase">{{ $product->title }}</h3>
                                 <span class="text-gray-500 mt-2">{{ $product->price }} DH</span>
                             </div>
-                        </div>
+                            <div class="flex mr-14">
+                                <a href="{{url('/description', $product->id) }}"
+                                   class="transition ease-in duration-300 bg-gray-700 hover:bg-gray-800 border hover:border-gray-500 border-gray-700 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-10 h-10 text-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                </a>
 
-                    </a>
+                            </div>
+
+                        </div>
+                    </div>
+
 
                     {{--   update product form--}}
                     <!-- Main modal -->
@@ -715,15 +743,15 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="/create" method="post" class="p-4 md:p-5">
+            <form action="{{ url('/create') }}" method="post" class="p-4 md:p-5" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="title"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product picture</label>
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+                            picture</label>
 
-                        <input type="file" name="picture">
-                        <button type="submit">Téléverser</button>
+                        <input type="file" name="picture" id="picture">
                     </div>
 
                     <div class="col-span-2">

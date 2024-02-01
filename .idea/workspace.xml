@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73be279e-93dc-45f7-a787-eceac0e144e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/beauty-products/resources/views/a.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beauty-products/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/beauty-products/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beauty-products/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/beauty-products/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beauty-products/resources/views/description.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/beauty-products/resources/views/description.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beauty-products/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/beauty-products/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beauty-products/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/beauty-products/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +182,7 @@
       <workItem from="1706565371192" duration="1221000" />
       <workItem from="1706566629212" duration="4872000" />
       <workItem from="1706604122973" duration="1162000" />
-      <workItem from="1706605344821" duration="51912000" />
+      <workItem from="1706605344821" duration="58669000" />
     </task>
     <servers />
   </component>
