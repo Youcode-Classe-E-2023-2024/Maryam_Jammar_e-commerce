@@ -6,6 +6,7 @@ use App\Models\Category;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,13 +15,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
         $products = Product::all();
+
+        if ($request->has('date') && $request->input('date') == 'date') {
+            $products = $products->sortByDesc('created_at');
+        }
+        elseif ($request->has('title') && $request->input('title') == 'title') {
+            $products = $products->sortBy('title');
+        }
+
+
         return view('welcome', compact('products', 'categories'));
     }
 
+
+//$sortedProductsTitle = $products->sortBy('title');
 
     /**
      * Store a newly created resource in storage.

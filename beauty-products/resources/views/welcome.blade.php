@@ -449,27 +449,35 @@
             </nav>
             <div class="relative mt-6 max-w-lg mx-auto">
                 <div class='flex items-center justify-center'>
+                    Trier par
                     <ul class="mx-auto grid max-w-full w-full grid-cols-3 gap-x-5 px-8">
-                        <li class="">
-                            <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked/>
-                            <label
-                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
-                                for="yes">All</label>
-                        </li>
 
-                        <li class="">
-                            <input class="peer sr-only" type="radio" value="no" name="answer" id="no"/>
-                            <label
-                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
-                                for="no">About</label>
-                        </li>
 
-                        <li class="">
-                            <input class="peer sr-only" type="radio" value="yesno" name="answer" id="yesno"/>
-                            <label
-                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out "
-                                for="yesno">Something</label>
-                        </li>
+{{--                        <li class="">--}}
+{{--                            <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked/>--}}
+{{--                            <label--}}
+{{--                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
+{{--                                for="yes">All</label>--}}
+{{--                        </li>--}}
+{{--                        sorting by date--}}
+                        <form action="{{ route('welcome') }}" method="get">
+                            <button type="submit">
+                            <li class="">
+                                <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>
+                                <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="date">Date</label>
+                            </li>
+                            </button>
+                        </form>
+
+{{--                        sorting by--}}
+                        <form action="{{ route('welcome') }}" method="get">
+                            <button type="submit">
+                                <li class="">
+                                    <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>
+                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="title">Alphabétiquement</label>
+                                </li>
+                            </button>
+                        </form>
                     </ul>
 
                 </div>
@@ -556,7 +564,7 @@
                              style="background-image: url('{{ asset($product->picture) }}')">
 
 
-{{--                            --}}{{--update button--}}
+                            {{--                            --}}{{--update button--}}
                             <button data-modal-target="crud-modal-update-{{ $product->id }}"
                                     data-modal-toggle="crud-modal-update-{{ $product->id }}"
                                     type="button"
@@ -567,7 +575,7 @@
                                         d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
                                 </svg>
                             </button>
-{{--                            delete button--}}
+                            {{--                            delete button--}}
                             <button>
                                 <form id="delete-form-{{ $product->id }}"
                                       action="{{ url('/destroy', $product->id) }}" method="post">
@@ -584,20 +592,6 @@
                                     </button>
                                 </form>
                             </button>
-
-
-{{--                            <a href="{{url('/description', $product->id) }}"--}}
-{{--                               class="transition ease-in duration-300 bg-gray-700 hover:bg-gray-800 border hover:border-gray-500 border-gray-700 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-10 h-10 text-center p-2">--}}
-{{--                                <svg xmlns="http://www.w3.org/2000/svg" class="" fill="none"--}}
-{{--                                     viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
-{{--                                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>--}}
-{{--                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
-{{--                                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>--}}
-{{--                                </svg>--}}
-{{--                            </a>--}}
-
-
                         </div>
                         <div class="flex justify-between items-center">
                             <div class="px-5 py-3">
@@ -606,7 +600,7 @@
                             </div>
                             <div class="flex mr-14">
                                 <a href="{{url('/description', $product->id) }}"
-                                   class="transition ease-in duration-300 bg-gray-700 hover:bg-gray-800 border hover:border-gray-500 border-gray-700 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-10 h-10 text-center p-2">
+                                   class="transition ease-in duration-300  hover:bg-gray-800 border hover:border-gray-500 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-10 h-10 text-center p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -706,6 +700,7 @@
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
     </div>
