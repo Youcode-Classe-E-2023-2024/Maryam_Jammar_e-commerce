@@ -27,6 +27,7 @@ class ProductController extends Controller
             $products = $products->sortBy('title');
         }
 
+        $products = Product::paginate(12);
 
         return view('welcome', compact('products', 'categories'));
     }
