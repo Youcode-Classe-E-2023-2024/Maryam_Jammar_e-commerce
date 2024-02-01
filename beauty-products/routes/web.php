@@ -21,4 +21,9 @@ Route::post('/create', [ProductController::class, 'store']);
 
 Route::get('/update', [ProductController::class, 'edit']);
 
+Route::post('/update/{id}', [ProductController::class, 'update']);
+
+Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
+
+
 //Route::get('/', [ProductController::class, 'show']);
