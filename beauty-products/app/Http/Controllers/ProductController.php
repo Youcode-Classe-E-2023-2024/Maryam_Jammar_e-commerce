@@ -81,8 +81,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category_id' => 'required'
+        ]);
+
+        $product = Product::find($id);
+        $product->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'category_id' => $request->category_id
+        ]);
+
+        return redirect()->route('welcome')
+            ->with('success', 'Produit mis à jour avec succès.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -92,6 +110,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('welcome')->with('delete', 'Produit supprimé avec succès.');
     }
 }

@@ -182,12 +182,23 @@
       <workItem from="1706565371192" duration="1221000" />
       <workItem from="1706566629212" duration="4872000" />
       <workItem from="1706604122973" duration="1162000" />
-      <workItem from="1706605344821" duration="37490000" />
+      <workItem from="1706605344821" duration="45309000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/beauty-products/resources/views/welcome.blade.php</url>
+          <line>674</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
