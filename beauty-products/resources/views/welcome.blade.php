@@ -551,30 +551,38 @@
 
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach($products as $product)
-                    <a href="{{route('description',  ['id' => $product->id])}}">
+                    <a href="{{url('/description', $product->id) }}">
                         <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                             <div class="flex items-end justify-end h-56 w-full bg-cover"
                                  style="background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80')">
                                 {{--                            update button--}}
-                                <button data-modal-target="crud-modal-update-{{ $product->id }}" data-modal-toggle="crud-modal-update-{{ $product->id }}"
-                                        type="button" class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                <button data-modal-target="crud-modal-update-{{ $product->id }}"
+                                        data-modal-toggle="crud-modal-update-{{ $product->id }}"
+                                        type="button"
+                                        class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path
+                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
                                     </svg>
                                 </button>
                                 {{--                            delete button--}}
                                 <button>
-                                    <form id="delete-form-{{ $product->id }}" action="{{ url('/destroy', $product->id) }}" method="post">
+                                    <form id="delete-form-{{ $product->id }}"
+                                          action="{{ url('/destroy', $product->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="p-2 rounded-full bg-red-600 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500" onclick="confirmDelete({{ $product->id }})">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        <button type="submit"
+                                                class="p-2 rounded-full bg-red-600 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500"
+                                                onclick="confirmDelete({{ $product->id }})">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                 viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M6 18L18 6M6 6l12 12"/>
                                             </svg>
                                         </button>
                                     </form>
                                 </button>
-
 
 
                             </div>
@@ -594,16 +602,19 @@
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <!-- Modal header -->
-                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <div
+                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                         Update Your Product
                                     </h3>
                                     <button type="button"
                                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                             data-modal-toggle="crud-modal-update-{{ $product->id }}">
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                             fill="none"
                                              viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="2"
                                                   d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                         </svg>
                                         <span class="sr-only">Close modal</span>
@@ -613,6 +624,7 @@
                                 <form action="/update/{{ $product->id }}" method="post" class="p-4 md:p-5">
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
+
                                         <div class="col-span-2">
                                             <label for="title"
                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
@@ -628,20 +640,23 @@
                                                    placeholder="2999 DH" required="">
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
-                                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                            <label for="category"
+                                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                                             <select id="category" name="category_id"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                 <option>Select category</option>
                                                 @foreach ($categories as $category)
                                                     {{$product->category_id}}
-                                                    <option value="{{ $category->id }}" {{ $category->id === $product->category_id ? 'selected' : '' }}>
+                                                    <option
+                                                        value="{{ $category->id }}" {{ $category->id === $product->category_id ? 'selected' : '' }}>
                                                         {{ $category->category }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-span-2">
-                                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+                                            <label for="description"
+                                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
                                                 Description</label>
                                             <textarea id="description" name="description" rows="4"
                                                       class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -705,6 +720,14 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="title"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product picture</label>
+
+                        <input type="file" name="picture">
+                        <button type="submit">Téléverser</button>
+                    </div>
+
+                    <div class="col-span-2">
+                        <label for="title"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                         <input type="text" name="title" id="title"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -749,7 +772,6 @@
         </div>
     </div>
 </div>
-
 
 
 {{--alert de succes , product--}}
