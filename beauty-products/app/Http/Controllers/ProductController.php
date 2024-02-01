@@ -30,12 +30,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
+        if ($request->hasFile('picture')) {
+            $picture = $request->file('picture');
+
+            // Générez un nom unique pour le fichier
+            $imageName = time() . '.' . $picture->getClientOriginalExtension();
+
+            // Déplacez le fichier téléversé vers le dossier de stockage approprié
+            $picture->move(public_path('picture'), $imageName);
+        }
+            $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required',
-        ]);
+            'picture' => 'required'
+            ]);
 
 
         $product = new Product();
@@ -43,6 +53,8 @@ class ProductController extends Controller
         $product->description = $validatedData['description'];
         $product->price = $validatedData['price'];
         $product->category_id = $validatedData['category_id'];
+        $product->picture = 'picture/' . $validatedData['picture'];
+
         $product->save();
 
         return redirect()->route('welcome')->with('status', 'Produit ajouté avec succès');
@@ -52,8 +64,11 @@ class ProductController extends Controller
     /***
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show()
+    public function show($id)
     {
+        $product = Product::find($id);
+        $category = $product->category;
+        return view('/description', compact('product', 'category'));
 
     }
 
