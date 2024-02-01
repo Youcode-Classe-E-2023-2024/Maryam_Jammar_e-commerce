@@ -568,7 +568,7 @@
                             <button data-modal-target="crud-modal-update-{{ $product->id }}"
                                     data-modal-toggle="crud-modal-update-{{ $product->id }}"
                                     type="button"
-                                    class="p-2 rounded-full z-50 bg-blue-300 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                    class="p-2 rounded-full bg-blue-300 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
                                      fill="currentColor">
                                     <path
@@ -647,6 +647,13 @@
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
 
+                                        <div class="col-span-2">
+                                            <label for="picture"
+                                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+                                                picture</label>
+
+                                            <input type="file" name="picture" id="picture" value="{{ $product->picture }}">
+                                        </div>
                                         <div class="col-span-2">
                                             <label for="title"
                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
