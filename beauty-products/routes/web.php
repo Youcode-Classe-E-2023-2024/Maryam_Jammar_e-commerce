@@ -25,5 +25,11 @@ Route::post('/update/{id}', [ProductController::class, 'update']);
 
 Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
 
+Route::get('/description/{id}', [ProductController::class, 'show']);
 
+
+//Route::get('/description', function () {
+//    return view('description');
+//});
 //Route::get('/', [ProductController::class, 'show']);
+//Route::get('/description', [ProductController::class, 'show'])->name('description');
