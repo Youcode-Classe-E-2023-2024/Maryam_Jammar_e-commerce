@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 
 use App\Models\Product;
@@ -24,36 +25,42 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-        if ($request->hasFile('picture')) {
-            $picture = $request->file('picture');
+//        if ($request->hasFile('picture')) {
+//            $picture = $request->file('picture');
+//
+//            // Générez un nom unique pour le fichier
+//            $imageName = time() . '.' . $picture->getClientOriginalExtension();
+//
+//            // Déplacez le fichier téléversé vers le dossier de stockage approprié
+//            $picture->move(public_path('picture'), $imageName);
+//        }
 
-            // Générez un nom unique pour le fichier
-            $imageName = time() . '.' . $picture->getClientOriginalExtension();
-
-            // Déplacez le fichier téléversé vers le dossier de stockage approprié
-            $picture->move(public_path('picture'), $imageName);
-        }
-            $validatedData = $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required',
             'picture' => 'required'
-            ]);
+        ]);
 
+//        $validatedData = $request->all();
+        $fileName = time() . $request->file('picture')->getClientOriginalName();
+        $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
+        $validatedData["picture"] = '/storage/'.$path;
 
         $product = new Product();
         $product->title = $validatedData['title'];
         $product->description = $validatedData['description'];
         $product->price = $validatedData['price'];
         $product->category_id = $validatedData['category_id'];
-        $product->picture = 'picture/' . $validatedData['picture'];
+        $product->picture = $validatedData["picture"];
+//        $product->picture = 'picture/' . $fileName;
 
         $product->save();
 
@@ -76,7 +83,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,8 +97,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -116,11 +123,10 @@ class ProductController extends Controller
     }
 
 
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
