@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -27,7 +29,7 @@ class ProductController extends Controller
             $products = $products->sortBy('title');
         }
 
-        $products = Product::paginate(12);
+        $products = Product::paginate(8);
 
         return view('welcome', compact('products', 'categories'));
     }
@@ -43,17 +45,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-//        if ($request->hasFile('picture')) {
-//            $picture = $request->file('picture');
-//
-//            // Générez un nom unique pour le fichier
-//            $imageName = time() . '.' . $picture->getClientOriginalExtension();
-//
-//            // Déplacez le fichier téléversé vers le dossier de stockage approprié
-//            $picture->move(public_path('picture'), $imageName);
-//        }
-
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -62,7 +53,6 @@ class ProductController extends Controller
             'picture' => 'required'
         ]);
 
-//        $validatedData = $request->all();
         $fileName = time() . $request->file('picture')->getClientOriginalName();
         $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
         $validatedData["picture"] = '/storage/'.$path;
@@ -120,7 +110,8 @@ class ProductController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $product = Product::find($id);
@@ -128,8 +119,18 @@ class ProductController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+
         ]);
+
+        // Gérer le téléchargement de la nouvelle image
+        if ($request->hasFile('picture')) {
+            $picture = $request->file('picture');
+            $filename = time() . '.' . $picture->getClientOriginalExtension();
+            Storage::putFileAs('public/images', $picture, $filename);
+            $product->picture = 'images/' . $filename;
+        }
+        $product->save();
 
         return redirect()->route('welcome')
             ->with('success', 'Produit mis à jour avec succès.');
@@ -149,4 +150,30 @@ class ProductController extends Controller
 
         return redirect()->route('welcome')->with('delete', 'Produit supprimé avec succès.');
     }
+
+    public function showProductsByCategory(Request $request) {
+
+        $catproducts = Product::where('category_id', '=', 1)->get();
+
+//        dd($catproducts);
+//        $products = DB::table('products')->where('category_id', '=', 1);
+//        $otherproducts = DB::table('products')->where('category_id', '!=', 1);
+
+
+        if ($request->has('category') && $request->input('category') == 'category') {
+            $products = $catproducts->sortByDesc('category_id');
+        }
+//        elseif ($request->has('others') && $request->input('others') == 'others') {
+//            $products = $products->sortBy($otherproducts);
+//        }
+        $categories = Category::all();
+
+        $catproducts = Product::paginate(8);
+        dd($catproducts);
+
+
+        return view('categories_product', compact('catproducts', 'categories'));
+    }
+
+
 }
