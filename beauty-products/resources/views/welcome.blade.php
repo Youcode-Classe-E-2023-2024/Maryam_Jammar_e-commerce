@@ -411,9 +411,9 @@
                     </svg>
                     <span class="mx-1 text-sm">NY</span>
                 </div>
-                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">
-                    Brand
-                </div>
+{{--                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">--}}
+                    <img src="/storage/picture/Beauty_Merry__2.png" alt="test" class="w-16">
+{{--                </div>--}}
                 <div class="flex items-center justify-end w-full">
                     <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">
                         <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -453,28 +453,32 @@
                     <ul class="mx-auto grid max-w-full w-full grid-cols-3 gap-x-5 px-8">
 
 
-{{--                        <li class="">--}}
-{{--                            <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked/>--}}
-{{--                            <label--}}
-{{--                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
-{{--                                for="yes">All</label>--}}
-{{--                        </li>--}}
-{{--                        sorting by date--}}
+                        {{--                        <li class="">--}}
+                        {{--                            <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked/>--}}
+                        {{--                            <label--}}
+                        {{--                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
+                        {{--                                for="yes">All</label>--}}
+                        {{--                        </li>--}}
+                        {{--                        sorting by date--}}
                         <form action="{{ route('welcome') }}" method="get">
                             <button type="submit">
-                            <li class="">
-                                <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>
-                                <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="date">Date</label>
-                            </li>
+                                <li class="">
+                                    <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>
+                                    <label
+                                        class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+                                        for="date">Date</label>
+                                </li>
                             </button>
                         </form>
 
-{{--                        sorting by--}}
+                        {{--                        sorting by--}}
                         <form action="{{ route('welcome') }}" method="get">
                             <button type="submit">
                                 <li class="">
                                     <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>
-                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="title">Alphabétiquement</label>
+                                    <label
+                                        class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+                                        for="title">Alphabétiquement</label>
                                 </li>
                             </button>
                         </form>
@@ -518,38 +522,44 @@
         </div>
         <div class="md:flex mt-8 md:-mx-4">
             <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2"
-                 style="background-image: url('https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                 style="background-image: url('https://images.pexels.com/photos/6954639/pexels-photo-6954639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
                 <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                     <div class="px-10 max-w-xl">
-                        <h2 class="text-2xl text-white font-semibold">Back Pack</h2>
+                        <h2 class="text-2xl text-white font-semibold">Perfums</h2>
                         <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
                             facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <button
-                            class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                            <span>Shop Now</span>
-                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </button>
+                        <form action="{{ url('categories_product') }}" methods="get">
+                            <input type="hidden" value="1" name="category">
+                            <button
+                                class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                                <span>Shop Now</span>
+                                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2"
-                 style="background-image: url('https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
+                 style="background-image: url('https://images.pexels.com/photos/5069412/pexels-photo-5069412.jpeg?auto=compress&cs=tinysrgb&w=600')">
                 <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                     <div class="px-10 max-w-xl">
-                        <h2 class="text-2xl text-white font-semibold">Games</h2>
+                        <h2 class="text-2xl text-white font-semibold">Beauty Products</h2>
                         <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
                             facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <button
-                            class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                            <span>Shop Now</span>
-                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </button>
+                        <form action="{{ url('categories_product') }}" methods="get">
+                            <input type="hidden" value="1" name="others">
+                            <button
+                                class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                                <span>Shop Now</span>
+                                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -560,7 +570,7 @@
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach($products as $product)
                     <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                        <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        <div class="flex items-end justify-end h-56 w-full bg-center bg-auto bg-contain"
                              style="background-image: url('{{ asset($product->picture) }}')">
 
 
@@ -652,7 +662,8 @@
                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
                                                 picture</label>
 
-                                            <input type="file" name="picture" id="picture" value="{{ $product->picture }}">
+                                            <input type="file" name="picture" id="picture"
+                                                   value="{{ $product->picture }}" class="form-control" required="">
                                         </div>
                                         <div class="col-span-2">
                                             <label for="title"
@@ -709,8 +720,8 @@
                 @endforeach
 
             </div>
-{{--            pagination link--}}
-            <div class="pagination ">
+            {{--            pagination link--}}
+            <div class="pagination mt-6">
                 {{ $products->links() }}
             </div>
         </div>
