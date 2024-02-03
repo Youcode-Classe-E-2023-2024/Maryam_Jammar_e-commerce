@@ -29,7 +29,7 @@ class ProductController extends Controller
             $products = $products->sortBy('title');
         }
 
-        $products = Product::paginate(8);
+        $products = Product::paginate(12);
 
         return view('welcome', compact('products', 'categories'));
     }
@@ -152,28 +152,27 @@ class ProductController extends Controller
     }
 
     public function showProductsByCategory(Request $request) {
+        $categoryId = 1;
 
-        $catproducts = Product::where('category_id', '=', 1)->get();
+        // Récupérez la catégorie spécifiée
+        $category = Category::find($categoryId);
 
-//        dd($catproducts);
-//        $products = DB::table('products')->where('category_id', '=', 1);
-//        $otherproducts = DB::table('products')->where('category_id', '!=', 1);
-
-
-        if ($request->has('category') && $request->input('category') == 'category') {
-            $products = $catproducts->sortByDesc('category_id');
+        if ($category) {
+            // Si la catégorie est trouvée, récupérez ses produits
+            $categoryProducts = $category->products()->paginate(8);
+        } else {
+            // Si la catégorie n'est pas trouvée, initialisez $categoryProducts avec une collection vide
+            $categoryProducts = collect();
         }
-//        elseif ($request->has('others') && $request->input('others') == 'others') {
-//            $products = $products->sortBy($otherproducts);
-//        }
+
+        // Récupérez toutes les catégories
         $categories = Category::all();
 
-        $catproducts = Product::paginate(8);
-        dd($catproducts);
-
-
-        return view('categories_product', compact('catproducts', 'categories'));
+        return view('categories_product', compact('categoryProducts', 'categories'));
     }
+
+
+
 
 
 }
