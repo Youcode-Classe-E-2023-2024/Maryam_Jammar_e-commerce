@@ -28,4 +28,4 @@ Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
 Route::get('/description/{id}', [ProductController::class, 'show']);
 
 
-Route::get('/categories_product', [ProductController::class, 'showProductsByCategory']);
+Route::get('/categories_product', [ProductController::class, 'showProductsByCategory'])->name('categories_product');

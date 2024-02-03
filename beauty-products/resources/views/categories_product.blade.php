@@ -449,7 +449,7 @@
             </nav>
             <div class="relative mt-6 max-w-lg mx-auto">
                 <div class='flex items-center justify-center'>
-                    Trier par
+{{--                    Trier par--}}
                     <ul class="mx-auto grid max-w-full w-full grid-cols-3 gap-x-5 px-8">
 
 
@@ -460,24 +460,24 @@
                         {{--                                for="yes">All</label>--}}
                         {{--                        </li>--}}
                         {{--                        sorting by date--}}
-                        <form action="{{ route('welcome') }}" method="get">
-                            <button type="submit">
-                                <li class="">
-                                    <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>
-                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="date">Date</label>
-                                </li>
-                            </button>
-                        </form>
+{{--                        <form action="{{ route('categories_product') }}" method="get">--}}
+{{--                            <button type="submit">--}}
+{{--                                <li class="">--}}
+{{--                                    <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>--}}
+{{--                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="date">Date</label>--}}
+{{--                                </li>--}}
+{{--                            </button>--}}
+{{--                        </form>--}}
 
                         {{--                        sorting by--}}
-                        <form action="{{ route('welcome') }}" method="get">
-                            <button type="submit">
-                                <li class="">
-                                    <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>
-                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="title">Alphabétiquement</label>
-                                </li>
-                            </button>
-                        </form>
+{{--                        <form action="{{ route('categories_product') }}" method="get">--}}
+{{--                            <button type="submit">--}}
+{{--                                <li class="">--}}
+{{--                                    <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>--}}
+{{--                                    <label class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out" for="title">Alphabétiquement</label>--}}
+{{--                                </li>--}}
+{{--                            </button>--}}
+{{--                        </form>--}}
                     </ul>
 
                 </div>
