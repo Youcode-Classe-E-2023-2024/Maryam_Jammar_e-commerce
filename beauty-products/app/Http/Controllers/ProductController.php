@@ -24,12 +24,11 @@ class ProductController extends Controller
 
         if ($request->has('date') && $request->input('date') == 'date') {
             $products = $products->sortByDesc('created_at');
-        }
-        elseif ($request->has('title') && $request->input('title') == 'title') {
+        } elseif ($request->has('title') && $request->input('title') == 'title') {
             $products = $products->sortBy('title');
         }
 
-        $products = Product::paginate(12);
+        $products = Product::paginate(8);
 
         return view('welcome', compact('products', 'categories'));
     }
@@ -55,7 +54,7 @@ class ProductController extends Controller
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
         $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
-        $validatedData["picture"] = '/storage/'.$path;
+        $validatedData["picture"] = '/storage/' . $path;
 
         $product = new Product();
         $product->title = $validatedData['title'];
@@ -151,27 +150,20 @@ class ProductController extends Controller
         return redirect()->route('welcome')->with('delete', 'Produit supprimé avec succès.');
     }
 
-    public function showProductsByCategory(Request $request) {
-        $categoryId = 1;
+    public function showProductsByCategory(Request $request)
+    {
+        $categoryId = $request->input('category');
 
-        // Récupérez la catégorie spécifiée
-        $category = Category::find($categoryId);
-
-        if ($category) {
-            // Si la catégorie est trouvée, récupérez ses produits
-            $categoryProducts = $category->products()->paginate(8);
+        if ($categoryId == 1) {
+            $categoryProducts = Product::where('category_id', 1)->paginate(8);
         } else {
-            // Si la catégorie n'est pas trouvée, initialisez $categoryProducts avec une collection vide
-            $categoryProducts = collect();
+            $categoryProducts = Product::where('category_id', '!=', 1)->paginate(8);
         }
 
-        // Récupérez toutes les catégories
         $categories = Category::all();
 
         return view('categories_product', compact('categoryProducts', 'categories'));
     }
-
-
 
 
 
