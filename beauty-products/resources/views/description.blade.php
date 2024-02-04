@@ -23,7 +23,7 @@
                 </a>
             </div>
             {{--logo--}}
-            <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16 items-center">
+            <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16 mx-auto">
             {{--logout--}}
             @auth
                 <div class="flex items-center justify-end text-gray-600 w-full">
