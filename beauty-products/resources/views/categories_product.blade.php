@@ -399,7 +399,7 @@
 <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
     <header>
         <div class="container mx-auto px-6 ">
-            <div class="flex items-center justify-between">
+            <div class="flex">
                 <div class="hidden w-full text-gray-600 md:flex md:items-center">
                     <a href="{{route('welcome')}}" class="flex items-center">
                         <svg class="h-5 w-5 mx-2 transform rotate-180" fill="none" stroke-linecap="round"
@@ -469,35 +469,36 @@
                     <div class="flex items-end justify-end h-56 w-full bg-center bg-auto bg-contain"
                          style="background-image: url('{{ asset($product->picture) }}')">
 
-
-                        {{--                            --}}{{--update button--}}
-                        <button data-modal-target="crud-modal-update-{{ $product->id }}"
-                                data-modal-toggle="crud-modal-update-{{ $product->id }}"
-                                type="button"
-                                class="p-2 rounded-full bg-blue-300 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
-                                 fill="currentColor">
-                                <path
-                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                            </svg>
-                        </button>
-                        {{--                            delete button--}}
-                        <button>
-                            <form id="delete-form-{{ $product->id }}"
-                                  action="{{ url('/destroy', $product->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                        class="p-2 rounded-full bg-red-500 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500"
-                                        onclick="confirmDelete({{ $product->id }})">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </button>
-                            </form>
-                        </button>
+                        @auth
+                            {{--                            --}}{{--update button--}}
+                            <button data-modal-target="crud-modal-update-{{ $product->id }}"
+                                    data-modal-toggle="crud-modal-update-{{ $product->id }}"
+                                    type="button"
+                                    class="p-2 rounded-full bg-blue-300 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                     fill="currentColor">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                                </svg>
+                            </button>
+                            {{--                            delete button--}}
+                            <button>
+                                <form id="delete-form-{{ $product->id }}"
+                                      action="{{ url('/destroy', $product->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="p-2 rounded-full bg-red-500 text-white mx-5 -mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-500"
+                                            onclick="confirmDelete({{ $product->id }})">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </button>
+                        @endauth
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="px-5 py-3">
