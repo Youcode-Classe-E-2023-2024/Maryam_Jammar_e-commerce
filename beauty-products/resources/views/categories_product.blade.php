@@ -444,9 +444,9 @@
                         <h2 class="text-2xl text-white font-semibold">Start today ! </h2>
                         <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
                             facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <a href="{{ route('login') }}">
+                        <a href="{{route('login')}}">
                             <button
-                                class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-teal-500 focus:outline-none focus:bg-blue-500">
+                                class="flex items-center mt-4 px-3 py-2 bg-pink-950 text-white text-sm uppercase font-medium rounded hover:bg-rose-900 focus:outline-none ">
                                 <span>Get Started</span>
                                 <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                      stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

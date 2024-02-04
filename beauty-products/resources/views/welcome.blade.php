@@ -413,7 +413,7 @@
                     <div class="flex p-2 w-full justify-center space-x-0">
                         <form action="{{ route('welcome') }}" method="get">
                             <button type="submit"
-                                    class="min-w-auto w-32 h-10 bg-teal-600  p-2 rounded-l-full hover:bg-teal-500  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
+                                    class="min-w-auto w-32 h-10 bg-rose-800  p-2 rounded-l-full hover:bg-pink-950  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="date" name="date" id="date"/>
                                 <label for="date">Date</label>
 
@@ -426,7 +426,7 @@
 
                         <form action="{{ route('welcome') }}" method="get">
                             <button
-                                class="min-w-auto w-32 h-10 bg-teal-600 p-2 rounded-r-full hover:bg-teal-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
+                                class="min-w-auto w-32 h-10 bg-rose-800 p-2 rounded-r-full hover:bg-pink-950 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="title" name="title" id="title"/>
                                 <label for="title">Title</label>
                             </button>
@@ -452,7 +452,7 @@
                         facere provident molestias ipsam sint voluptatum pariatur.</p>
                     <a href="{{route('login')}}">
                         <button
-                            class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-teal-500 focus:outline-none focus:bg-blue-500">
+                            class="flex items-center mt-4 px-3 py-2 bg-pink-950 text-white text-sm uppercase font-medium rounded hover:bg-rose-900 focus:outline-none ">
                             <span>Get Started</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                  stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
