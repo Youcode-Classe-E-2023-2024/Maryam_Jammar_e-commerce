@@ -17,7 +17,7 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
 
-Route::get('/', [ProductController::class, 'index'])->name('welcome');
+Route::get('/', [ProductController::class, 'indexUser'])->name('welcome');
 
 Route::post('/create', [ProductController::class, 'store']);
 
