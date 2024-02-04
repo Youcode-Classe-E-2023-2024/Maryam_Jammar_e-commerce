@@ -30,7 +30,7 @@ class ProductController extends Controller
 
         $products = $products->paginate(8);
 
-        return view('welcome', compact('products', 'categories'));
+        return view('dashboard', compact('products', 'categories'));
     }
 
 
@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('welcome')->with('status', 'Produit ajouté avec succès');
+        return redirect()->route('welcome',)->with('status', 'Produit ajouté avec succès');
     }
 
 

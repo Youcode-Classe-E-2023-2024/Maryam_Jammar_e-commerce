@@ -433,7 +433,7 @@
                 <div>
 
                     <div class="flex p-2 w-full justify-center space-x-0">
-                        <form action="{{ route('welcome') }}" method="get">
+                        <form action="{{ route('dashboard') }}" method="get">
                             <button type="submit"
                                     class="min-w-auto w-32 h-10 bg-teal-600  p-2 rounded-l-full hover:bg-teal-500  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="date" name="date" id="date"/>
@@ -446,7 +446,7 @@
                             Sort by
                         </button>
 
-                        <form action="{{ route('welcome') }}" method="get">
+                        <form action="{{ route('dashboard') }}" method="get">
                             <button
                                 class="min-w-auto w-32 h-10 bg-teal-600 p-2 rounded-r-full hover:bg-teal-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="title" name="title" id="title"/>
