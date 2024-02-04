@@ -408,34 +408,22 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                   d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                         </svg>
-                        <span class="mx-1 text-sm ">Add Your Product</span>
+                        <span class="mx-1 text-sm font-bold ">Add Your Product</span>
 
                     </button>
                 </div>
-
-                {{--                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">--}}
+                {{--logo--}}
                 <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16">
-                {{--                </div>--}}
-                <div class="flex items-center justify-end w-full">
-                    <a href="" class="flex">
-                        <span>Logout</span>
+                {{--logout--}}
+                <div class="flex items-center justify-end text-gray-600 w-full">
+                    <a href="" class="flex items-center">
+                        <span class="font-bold">Logout</span>
                         <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2"
+                             stroke-width="3"
                              viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
                     </a>
-
-                    {{--                    <div class="flex sm:hidden">--}}
-                    {{--                        <button @click="isOpen = !isOpen" type="button"--}}
-                    {{--                                class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"--}}
-                    {{--                                aria-label="toggle menu">--}}
-                    {{--                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">--}}
-                    {{--                                <path fill-rule="evenodd"--}}
-                    {{--                                      d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>--}}
-                    {{--                            </svg>--}}
-                    {{--                        </button>--}}
-                    {{--                    </div>--}}
                 </div>
             </div>
 
@@ -495,6 +483,8 @@
                 </div>
             </div>
         </div>
+
+        {{--        categories cards--}}
         <div class="md:flex mt-8 md:-mx-4">
             <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2"
                  style="background-image: url('https://images.pexels.com/photos/6954639/pexels-photo-6954639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
@@ -540,7 +530,7 @@
             </div>
         </div>
         <div class="mt-16">
-            <h3 class="text-gray-600 text-2xl font-medium">News</h3>
+            {{--            <h3 class="text-gray-600 text-2xl font-medium">New Products</h3>--}}
 
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach($products as $product)
@@ -628,7 +618,8 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form action="/update/{{ $product->id }}" method="post" class="p-4 md:p-5" enctype="multipart/form-data">
+                                <form action="/update/{{ $product->id }}" method="post" class="p-4 md:p-5"
+                                      enctype="multipart/form-data">
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
 
@@ -638,7 +629,8 @@
                                                 picture</label>
 
                                             <input type="file" name="picture" id="picture"
-                                                   value="{{ $product->picture }}" class="form-control" required="" class="form-control" accept="image/*">
+                                                   value="{{ $product->picture }}" class="form-control" required=""
+                                                   class="form-control" accept="image/*">
                                         </div>
                                         <div class="col-span-2">
                                             <label for="title"
