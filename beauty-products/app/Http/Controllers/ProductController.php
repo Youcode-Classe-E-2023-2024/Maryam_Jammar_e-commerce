@@ -20,18 +20,19 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-        $products = Product::all();
+        $products = Product::query(); // requete de type Builder
 
         if ($request->has('date') && $request->input('date') == 'date') {
-            $products = $products->sortByDesc('created_at');
+            $products->orderByDesc('created_at');
         } elseif ($request->has('title') && $request->input('title') == 'title') {
-            $products = $products->sortBy('title');
+            $products->orderBy('title');
         }
 
-        $products = Product::paginate(8);
+        $products = $products->paginate(8); 
 
         return view('welcome', compact('products', 'categories'));
     }
+
 
 
 //$sortedProductsTitle = $products->sortBy('title');
