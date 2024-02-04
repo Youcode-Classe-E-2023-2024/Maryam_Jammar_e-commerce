@@ -28,7 +28,7 @@ class ProductController extends Controller
             $products->orderBy('title');
         }
 
-        $products = $products->paginate(8); 
+        $products = $products->paginate(8);
 
         return view('welcome', compact('products', 'categories'));
     }
@@ -63,7 +63,6 @@ class ProductController extends Controller
         $product->price = $validatedData['price'];
         $product->category_id = $validatedData['category_id'];
         $product->picture = $validatedData["picture"];
-//        $product->picture = 'picture/' . $fileName;
 
         $product->save();
 
@@ -104,6 +103,32 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+//    public function update(Request $request, $id)
+//    {
+//        $request->validate([
+//            'title' => 'required',
+//            'description' => 'required',
+//            'price' => 'required|numeric',
+//            'category_id' => 'required',
+//            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+//        ]);
+//
+//        $fileName = time() . $request->file('picture')->getClientOriginalName();
+//        $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
+//        $validatedData["picture"] = '/storage/' . $path;
+//
+//        $product = Product::findOrFail($id);
+//        $product->title = $request->title;
+//        $product->description = $request->description;
+//        $product->price = $request->price;
+//        $product->category_id = $request->category_id;
+//
+//
+//        $product->save();
+//
+//        return redirect()->route('welcome')->with('success', 'Produit mis à jour avec succès.');
+//    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -114,26 +139,21 @@ class ProductController extends Controller
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $product = Product::find($id);
-        $product->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price,
-            'category_id' => $request->category_id,
+        $product = Product::findOrFail($id);
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
 
-        ]);
-
-        // Gérer le téléchargement de la nouvelle image
         if ($request->hasFile('picture')) {
-            $picture = $request->file('picture');
-            $filename = time() . '.' . $picture->getClientOriginalExtension();
-            Storage::putFileAs('public/images', $picture, $filename);
-            $product->picture = 'images/' . $filename;
+            $fileName = time() . '.' . $request->file('picture')->getClientOriginalExtension();
+            $request->file('picture')->storeAs('public/images', $fileName);
+            $product->picture = 'storage/images/' . $fileName;
         }
+
         $product->save();
 
-        return redirect()->route('welcome')
-            ->with('success', 'Produit mis à jour avec succès.');
+        return redirect()->route('welcome')->with('success', 'Produit mis à jour avec succès.');
     }
 
 

@@ -444,37 +444,10 @@
 
                 <div>
 
-                    {{--                    <ul class="flex sm:justify-between" >--}}
-{{--                    <form action="{{ route('welcome') }}" method="get">--}}
-{{--                        <button type="submit">--}}
-{{--                            <li class="">--}}
-{{--                                <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>--}}
-{{--                                <label--}}
-{{--                                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
-{{--                                    for="date">Date</label>--}}
-{{--                            </li>--}}
-{{--                        </button>--}}
-{{--                    </form>--}}
-                    {{--                        <h2 class="flex items-center justify-center  font-bold">--}}
-                    {{--                            Or--}}
-                    {{--                        </h2>--}}
-                    {{--                        --}}{{--                        sorting by--}}
-{{--                    <form action="{{ route('welcome') }}" method="get">--}}
-{{--                        <button type="submit">--}}
-{{--                            <li class="">--}}
-{{--                                <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>--}}
-{{--                                <label--}}
-{{--                                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
-{{--                                    for="title">Alphabétiquement</label>--}}
-{{--                            </li>--}}
-{{--                        </button>--}}
-{{--                    </form>--}}
-                    {{--                    </ul>--}}
-
                     <div class="flex p-2 w-full justify-center space-x-0">
                         <form action="{{ route('welcome') }}" method="get">
                             <button type="submit"
-                                    class="min-w-auto w-32 h-10 bg-red-300 p-2 rounded-l-full hover:bg-red-500  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
+                                    class="min-w-auto w-32 h-10 bg-teal-600  p-2 rounded-l-full hover:bg-teal-500  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="date" name="date" id="date"/>
                                 <label for="date">Date</label>
 
@@ -487,7 +460,7 @@
 
                         <form action="{{ route('welcome') }}" method="get">
                             <button
-                                class="min-w-auto w-32 h-10 bg-green-300 p-2 rounded-r-full hover:bg-green-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
+                                class="min-w-auto w-32 h-10 bg-teal-600 p-2 rounded-r-full hover:bg-teal-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="title" name="title" id="title"/>
                                 <label for="title">Title</label>
                             </button>
@@ -512,7 +485,7 @@
                     <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
                         facere provident molestias ipsam sint voluptatum pariatur.</p>
                     <button
-                        class="flex items-center mt-4 px-3 py-2 bg-green-700 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                        class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                         <span>Get Started</span>
                         <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
                              stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -655,7 +628,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form action="/update/{{ $product->id }}" method="post" class="p-4 md:p-5">
+                                <form action="/update/{{ $product->id }}" method="post" class="p-4 md:p-5" enctype="multipart/form-data">
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
 
@@ -665,7 +638,7 @@
                                                 picture</label>
 
                                             <input type="file" name="picture" id="picture"
-                                                   value="{{ $product->picture }}" class="form-control" required="">
+                                                   value="{{ $product->picture }}" class="form-control" required="" class="form-control" accept="image/*">
                                         </div>
                                         <div class="col-span-2">
                                             <label for="title"
