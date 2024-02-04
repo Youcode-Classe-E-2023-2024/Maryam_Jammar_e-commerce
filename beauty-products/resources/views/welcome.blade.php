@@ -400,80 +400,100 @@
     <header>
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
-                    <div data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button" class=" w-full text-gray-600 md:flex md:items-center hover:underline sm:mx-3 sm:mt-0">
-                       <button class="flex items-center">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                           </svg>
-                           <span class="mx-1 text-sm ">Add Your Product</span>
+                <div data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button"
+                     class=" w-full text-gray-600 md:flex md:items-center hover:underline sm:mx-3 sm:mt-0">
+                    <button class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        <span class="mx-1 text-sm ">Add Your Product</span>
 
-                       </button>
-                    </div>
+                    </button>
+                </div>
 
                 {{--                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">--}}
-                    <img src="/storage/picture/Beauty_Merry__2.png" alt="test" class="w-16">
-{{--                </div>--}}
+                <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16">
+                {{--                </div>--}}
                 <div class="flex items-center justify-end w-full">
-                        <a href="" class="flex">
-                            <span>Logout</span>
-                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </a>
+                    <a href="" class="flex">
+                        <span>Logout</span>
+                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                             stroke-width="2"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
 
-{{--                    <div class="flex sm:hidden">--}}
-{{--                        <button @click="isOpen = !isOpen" type="button"--}}
-{{--                                class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"--}}
-{{--                                aria-label="toggle menu">--}}
-{{--                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">--}}
-{{--                                <path fill-rule="evenodd"--}}
-{{--                                      d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>--}}
-{{--                            </svg>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="flex sm:hidden">--}}
+                    {{--                        <button @click="isOpen = !isOpen" type="button"--}}
+                    {{--                                class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"--}}
+                    {{--                                aria-label="toggle menu">--}}
+                    {{--                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">--}}
+                    {{--                                <path fill-rule="evenodd"--}}
+                    {{--                                      d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>--}}
+                    {{--                            </svg>--}}
+                    {{--                        </button>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
 
             <div class="relative mt-6 max-w-lg mx-auto">
-                <h2 class="flex items-center justify-center p-2 font-bold">
-                    Sort by
-                </h2>
 
-                <div class='flex items-center justify-center'>
 
-                    <ul class="mx-auto grid max-w-full w-full grid-cols-3 gap-x-5">
+                <div>
 
-                        {{--                        <li class="">--}}
-                        {{--                            <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked/>--}}
-                        {{--                            <label--}}
-                        {{--                                class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
-                        {{--                                for="yes">All</label>--}}
-                        {{--                        </li>--}}
-                        {{--                        sorting by date--}}
+                    {{--                    <ul class="flex sm:justify-between" >--}}
+{{--                    <form action="{{ route('welcome') }}" method="get">--}}
+{{--                        <button type="submit">--}}
+{{--                            <li class="">--}}
+{{--                                <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>--}}
+{{--                                <label--}}
+{{--                                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
+{{--                                    for="date">Date</label>--}}
+{{--                            </li>--}}
+{{--                        </button>--}}
+{{--                    </form>--}}
+                    {{--                        <h2 class="flex items-center justify-center  font-bold">--}}
+                    {{--                            Or--}}
+                    {{--                        </h2>--}}
+                    {{--                        --}}{{--                        sorting by--}}
+{{--                    <form action="{{ route('welcome') }}" method="get">--}}
+{{--                        <button type="submit">--}}
+{{--                            <li class="">--}}
+{{--                                <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>--}}
+{{--                                <label--}}
+{{--                                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"--}}
+{{--                                    for="title">Alphabétiquement</label>--}}
+{{--                            </li>--}}
+{{--                        </button>--}}
+{{--                    </form>--}}
+                    {{--                    </ul>--}}
+
+                    <div class="flex p-2 w-full justify-center space-x-0">
                         <form action="{{ route('welcome') }}" method="get">
-                            <button type="submit">
-                                <li class="">
-                                    <input class="peer sr-only" type="radio" value="date" name="date" id="date"/>
-                                    <label
-                                        class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
-                                        for="date">Date</label>
-                                </li>
+                            <button type="submit"
+                                    class="min-w-auto w-32 h-10 bg-red-300 p-2 rounded-l-full hover:bg-red-500  text-white font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
+                                <input type="hidden" value="date" name="date" id="date"/>
+                                <label for="date">Date</label>
+
                             </button>
                         </form>
 
-                        {{--                        sorting by--}}
+                        <button class="min-w-auto w-32 h-10  p-2 rounded-none text-black font-semibold ">
+                            Sort by
+                        </button>
+
                         <form action="{{ route('welcome') }}" method="get">
-                            <button type="submit">
-                                <li class="">
-                                    <input class="peer sr-only" type="radio" value="title" name="title" id="title"/>
-                                    <label
-                                        class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
-                                        for="title">Alphabétiquement</label>
-                                </li>
+                            <button
+                                class="min-w-auto w-32 h-10 bg-green-300 p-2 rounded-r-full hover:bg-green-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
+                                <input type="hidden" value="title" name="title" id="title"/>
+                                <label for="title">Title</label>
                             </button>
                         </form>
-                    </ul>
+
+                    </div>
 
                 </div>
             </div>
