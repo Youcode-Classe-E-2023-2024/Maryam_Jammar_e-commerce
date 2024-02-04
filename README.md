@@ -1,7 +1,8 @@
 
-# Boutique de Produits de Beauté et de Soins
 
 ![image](https://github.com/Youcode-Classe-E-2023-2024/Maryam_Jammar_e-commerce/assets/132862036/cf948c5f-740a-457f-856b-a41f419521d7)
+
+# Boutique de Produits de Beauté et de Soins
 
 Ce projet est une application e-commerce développée avec Laravel pour une boutique en ligne de produits de beauté et de soins. L'objectif est de permettre aux utilisateurs de parcourir, acheter et gérer des produits de beauté et de soins.
 
