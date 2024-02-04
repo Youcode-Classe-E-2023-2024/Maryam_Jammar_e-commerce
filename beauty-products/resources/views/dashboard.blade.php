@@ -447,7 +447,7 @@
                         </button>
 
                         <form action="{{ route('dashboard') }}" method="get">
-                            <button
+                            <button type="submit"
                                 class="min-w-auto w-32 h-10 bg-teal-600 p-2 rounded-r-full hover:bg-teal-500 text-white font-semibold hover:flex-grow transition-all duration-200 ease-in-out">
                                 <input type="hidden" value="title" name="title" id="title"/>
                                 <label for="title">Title</label>
@@ -465,24 +465,6 @@
 </div>
 <main class="my-8">
     <div class="container mx-auto px-6">
-        <div class="h-64 rounded-md overflow-hidden bg-contain bg-center"
-             style="background-image: url('https://assets.teenvogue.com/photos/6184454b087dc3c0e7cb3d94/16:9/w_2560%2Cc_limit/GettyImages-1301487903.jpg')">
-            <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
-                <div class="px-10 max-w-xl">
-                    <h2 class="text-2xl text-white font-semibold">Start today ! </h2>
-                    <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
-                        facere provident molestias ipsam sint voluptatum pariatur.</p>
-                    <button
-                        class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                        <span>Get Started</span>
-                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
 
         {{--        categories cards--}}
         <div class="md:flex mt-8 md:-mx-4">
