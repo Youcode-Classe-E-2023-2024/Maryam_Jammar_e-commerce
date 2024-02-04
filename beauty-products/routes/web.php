@@ -14,21 +14,9 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
-
 Route::get('/', [ProductController::class, 'indexUser'])->name('welcome');
 
-Route::post('/create', [ProductController::class, 'store']);
-
-Route::get('/update', [ProductController::class, 'edit']);
-
-Route::post('/update/{id}', [ProductController::class, 'update']);
-
-Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
-
 Route::get('/description/{id}', [ProductController::class, 'show']);
-
 
 Route::get('/categories_product', [ProductController::class, 'showProductsByCategory'])->name('categories_product');
 
@@ -41,6 +29,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
+
+    Route::post('/create', [ProductController::class, 'store']);
+
+    Route::get('/update', [ProductController::class, 'edit']);
+
+    Route::post('/update/{id}', [ProductController::class, 'update']);
+
+    Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
+
+
+
+
 });
 
 require __DIR__.'/auth.php';
