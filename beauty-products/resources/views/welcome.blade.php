@@ -695,12 +695,17 @@
     </div>
 </main>
 
-<footer class="bg-gray-200">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Brand</a>
-        <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
-    </div>
+<footer class="bg-gray-100 mt-4">
+    <div class="container mx-auto px-6 py-4 ">
+        <p class="text-center text-sm text-gray-500 ">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            All rights reserved.
+        </p>    </div>
 </footer>
+
 </div>
 
 {{--   add product form--}}
