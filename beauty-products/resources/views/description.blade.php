@@ -23,18 +23,24 @@
                 </a>
             </div>
             {{--logo--}}
-            <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16">
+            <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16 items-center">
             {{--logout--}}
-            <div class="flex items-center justify-end text-gray-600 w-full">
-                <a href="" class="flex items-center">
-                    <span class="font-bold">Logout</span>
-                    <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                         stroke-width="3"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-            </div>
+            @auth
+                <div class="flex items-center justify-end text-gray-600 w-full">
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       class="flex items-center">
+                        <span class="font-bold">Logout</span>
+                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                             stroke-width="3" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            @endauth
         </div>
     </div>
 </header>

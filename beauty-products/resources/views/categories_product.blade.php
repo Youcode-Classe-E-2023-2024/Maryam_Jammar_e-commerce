@@ -411,18 +411,24 @@
                     </a>
                 </div>
                 {{--logo--}}
-                <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16">
+                <img src="/storage/picture/Beauty_Merry__3.png" alt="test" class="w-16 mx-auto">
                 {{--logout--}}
-                <div class="flex items-center justify-end text-gray-600 w-full">
-                    <a href="" class="flex items-center">
-                        <span class="font-bold">Logout</span>
-                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="3"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
+                @auth
+                    <div class="flex items-center justify-end text-gray-600 w-full">
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                           class="flex items-center">
+                            <span class="font-bold">Logout</span>
+                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                 stroke-width="3" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                @endauth
             </div>
         </div>
     </header>
@@ -430,26 +436,28 @@
 </div>
 <main class="my-8">
     <div class="container mx-auto px-6">
-        <div class="h-64 rounded-md overflow-hidden bg-contain bg-center"
-             style="background-image: url('https://assets.teenvogue.com/photos/6184454b087dc3c0e7cb3d94/16:9/w_2560%2Cc_limit/GettyImages-1301487903.jpg')">
-            <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
-                <div class="px-10 max-w-xl">
-                    <h2 class="text-2xl text-white font-semibold">Start today ! </h2>
-                    <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
-                        facere provident molestias ipsam sint voluptatum pariatur.</p>
-                    <a href="{{route('login')}}">
-                        <button
-                            class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-teal-500 focus:outline-none focus:bg-blue-500">
-                            <span>Get Started</span>
-                            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </button>
-                    </a>
+        @guest
+            <div class="h-64 rounded-md overflow-hidden bg-contain bg-center"
+                 style="background-image: url('https://assets.teenvogue.com/photos/6184454b087dc3c0e7cb3d94/16:9/w_2560%2Cc_limit/GettyImages-1301487903.jpg')">
+                <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                    <div class="px-10 max-w-xl">
+                        <h2 class="text-2xl text-white font-semibold">Start today ! </h2>
+                        <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
+                            facere provident molestias ipsam sint voluptatum pariatur.</p>
+                        <a href="{{ route('login') }}">
+                            <button
+                                class="flex items-center mt-4 px-3 py-2 bg-teal-800 text-white text-sm uppercase font-medium rounded hover:bg-teal-500 focus:outline-none focus:bg-blue-500">
+                                <span>Get Started</span>
+                                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endguest
 
 
     </div>
@@ -531,7 +539,8 @@
                 document.write(new Date().getFullYear());
             </script>
             All rights reserved.
-        </p>    </div>
+        </p>
+    </div>
 </footer>
 
 </div>
