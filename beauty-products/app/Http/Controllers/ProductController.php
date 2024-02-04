@@ -34,6 +34,21 @@ class ProductController extends Controller
     }
 
 
+    public function indexUser(Request $request)
+    {
+        $categories = Category::all();
+        $products = Product::query(); // requete de type Builder
+
+        if ($request->has('date') && $request->input('date') == 'date') {
+            $products->orderByDesc('created_at');
+        } elseif ($request->has('title') && $request->input('title') == 'title') {
+            $products->orderBy('title');
+        }
+
+        $products = $products->paginate(8);
+
+        return view('welcome', compact('products', 'categories'));
+    }
 
 //$sortedProductsTitle = $products->sortBy('title');
 
@@ -66,7 +81,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('welcome',)->with('status', 'Produit ajouté avec succès');
+        return redirect()->route('dashboard',)->with('status', 'Produit ajouté avec succès');
     }
 
 
@@ -93,7 +108,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $categories = Category::all();
 
-        return view('welcome', compact('product', 'categories'));
+        return view('dashboard', compact('product', 'categories'));
     }
 
     /**
@@ -103,31 +118,6 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-//    public function update(Request $request, $id)
-//    {
-//        $request->validate([
-//            'title' => 'required',
-//            'description' => 'required',
-//            'price' => 'required|numeric',
-//            'category_id' => 'required',
-//            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-//        ]);
-//
-//        $fileName = time() . $request->file('picture')->getClientOriginalName();
-//        $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
-//        $validatedData["picture"] = '/storage/' . $path;
-//
-//        $product = Product::findOrFail($id);
-//        $product->title = $request->title;
-//        $product->description = $request->description;
-//        $product->price = $request->price;
-//        $product->category_id = $request->category_id;
-//
-//
-//        $product->save();
-//
-//        return redirect()->route('welcome')->with('success', 'Produit mis à jour avec succès.');
-//    }
 
     public function update(Request $request, $id)
     {
@@ -153,7 +143,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('welcome')->with('success', 'Produit mis à jour avec succès.');
+        return redirect()->route('dashboard')->with('success', 'Produit mis à jour avec succès.');
     }
 
 
@@ -168,7 +158,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->route('welcome')->with('delete', 'Produit supprimé avec succès.');
+        return redirect()->route('dashboard')->with('delete', 'Produit supprimé avec succès.');
     }
 
     public function showProductsByCategory(Request $request)
