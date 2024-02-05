@@ -1,6 +1,6 @@
 
 
-![image](https://github.com/Youcode-Classe-E-2023-2024/Maryam_Jammar_e-commerce/assets/132862036/cf948c5f-740a-457f-856b-a41f419521d7)
+![image](https://github.com/Youcode-Classe-E-2023-2024/Maryam_Jammar_e-commerce/assets/132862036/607fdaff-3b13-4266-bbf9-a0339e8227fd)
 
 # Boutique de Produits de Beauté et de Soins
 
