@@ -467,7 +467,7 @@
         {{--        categories cards--}}
         <div class="md:flex mt-8 md:-mx-4">
             <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-contain bg-cover bg-center md:w-1/2"
-                 style="background-image: url('https://images.pexels.com/photos/11711815/pexels-photo-11711815.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')">
+                 style="background-image: url('https://s3.eu-central-1.amazonaws.com/uberall-userpics-prod/2152319/DrVgERE7aO.jpg')">
                 <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                     <div class="px-10 max-w-xl">
                         <h2 class="text-2xl text-white font-semibold">Perfums</h2>
